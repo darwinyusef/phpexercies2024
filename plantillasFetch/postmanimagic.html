@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      if (true) {
+        const datos = {
+          nombre: "pepito897",
+          telefono: "12316546978",
+          email: "pepito897@porfinpost.com",
+          password: "123456",
+        };
+
+        try {
+          fetch("/register", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(datos),
+          })
+            .then((response) => {
+              console.log(response);
+            })
+            .catch((error) => {
+              console.log("🚀 ~ document.getElementById ~ error:", error);
+              console.log("Ha cometido un error el sistema");
+            });
+        } catch (error) {
+          console.error("Error al registrar", error);
+          alert("Error al registrar. Por favor, intenta nuevamente.");
+        }
+      } else {
+        alert(
+          "El password que usted ha provisto no es igual a la confirmación"
+        );
+      }
+    </script>
+  </body>
+</html>

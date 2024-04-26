@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function fetchUsuarios() {
+      
+
+        fetch('http://localhost/apisena/usuariopdo.php', {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            // Puedes incluir otros headers según sea necesario
+          },
+        })
+          .then((response) => {
+            if (!response.ok) {
+              throw new Error(
+                `Error al obtener usuarios. Código de estado: ${response.status}`
+              );
+            }
+            return response.json();
+          })
+          .then((data) => {
+            if (data && data.data) {
+                console.log(data);
+              // displayUsuarios(data);
+            } else {
+              throw new Error(
+                "Respuesta de la API no tiene el formato esperado."
+              );
+            }
+          })
+          .catch((error) => {
+            console.error("Error:", error.message);
+            // displayError(
+            //   "Hubo un error al obtener usuarios. Por favor, inténtalo de nuevo."
+            // );
+          });
+      }
+
+      fetchUsuarios();
+    </script>
+  </body>
+</html>
